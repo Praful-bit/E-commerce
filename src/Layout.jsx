@@ -3,6 +3,7 @@ import Header from "./Components/Header/Header";
 import { Outlet } from "react-router-dom";
 import { useState } from "react";
 import { ProductProvider } from "./Context/ProductContext";
+import Footer from "./Components/Footer/Footer";
 function Layout() {
   const [cartActive, setCartActive] = useState(false);
   const [item, setProducts] = useState([]);
@@ -19,6 +20,7 @@ setProducts((prev) => prev.filter((product) => product.id !== id));
     <ProductProvider value={{ addToCart,item,deleteCartItem }}>
       <Header setCartActive={setCartActive} cartActive={cartActive} />
       <Outlet cartActive={cartActive} />
+      <Footer/>
     </ProductProvider>
   );
 }

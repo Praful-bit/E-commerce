@@ -5,13 +5,15 @@ import './index.css'
 import Home from './Components/Home/Home.jsx'
 import Layout from './Layout.jsx'
 import Store from './Components/Store/Store.jsx'
+import About from './Components/About/About.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout/>}>
       <Route path='/home' element={<Home/>}/>
       <Route path='/' element={<Store/>}/>
-    
+      <Route path='/about' element={<About/>}/>
+      
     </Route>
   )
 )
