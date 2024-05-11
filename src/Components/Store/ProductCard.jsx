@@ -1,7 +1,11 @@
 /* eslint-disable react/prop-types */
-// import React from "react";
-
+import {userProduct} from '..//../Context/ProductContext'
 function ProductCard({ product }) {
+const {addToCart}=userProduct()
+const add =()=>{
+  addToCart(product);  
+}
+
   return (
     <>
       <div className="flex justify-center mt-12 ">
@@ -15,7 +19,7 @@ function ProductCard({ product }) {
             <h3 className="text-gray-900 font-semibold text-lg my-12">{""}</h3>
             <div className="flex justify-between items-center">
               <span className="text-gray-700 font-bold">${product.price}</span>
-              <button className="px-2 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none ml-14">
+              <button onClick={()=>add(product)} className="px-2 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none ml-14">
                 ADD TO CART
               </button>
             </div>
