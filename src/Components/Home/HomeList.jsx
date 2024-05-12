@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 
 function HomeList() {
   return (
@@ -8,7 +8,7 @@ function HomeList() {
           <div>JUL16</div>
           <div>DETROIT, MI</div>
           <div>DTE ENERGY MUSIC THEATRE</div>
-          <button className="bg-blue-500 rounded-lg text-white">
+          <button className="bg-blue-500 rounded-lg text-white ">
             BUY TICKETS
           </button>
         </li>

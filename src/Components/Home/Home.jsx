@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 // import React from "react";
 import { Link } from "react-router-dom";
 import HomeList from "./HomeList";
