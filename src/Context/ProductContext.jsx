@@ -15,7 +15,8 @@ export const ProductContext = createContext({
   addToCart: (products) => {},
   deleteCartItem:(id)=>{},
   setQuantity:(quantity,id)=>{},
-  handleSet:(id)=>{}
+  handleSet:(id)=>{},
+  handleApiCall:()=>{}
 });
 
 export const ProductProvider = ProductContext.Provider;

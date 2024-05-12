@@ -31,6 +31,13 @@ function Header({ setCartActive }) {
           >
             About
           </NavLink>
+          <NavLink
+            to="/contactUs"
+            className="text-xl"
+            onClick={() => setCartActive(false)}
+          >
+            Contact US
+          </NavLink>
           {showCartButton && (
             <Cart className="text-lg border-2 border-teal-600 cursor-pointer text-white py-1 px-4 rounded inline-block justify-end" />
           )}
