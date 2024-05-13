@@ -7,18 +7,19 @@ import Layout from './Layout.jsx'
 import Store from './Components/Store/Store.jsx'
 import About from './Components/About/About.jsx'
 import ContactUs from './Components/ContactUS/ContactUs.jsx'
+import StoreUserProduct from './Components/Store/StoreUserProduct.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/' element={<Layout/>}>
-      <Route path='/home' element={<Home/>}/>
-      <Route path='/' element={<Store/>}/>
-      <Route path='/about' element={<About/>}/>
-      <Route path='/contactUs' element={<ContactUs/>}/>
-      
+    <Route path="/" element={<Layout />}>
+      <Route path="/home" element={<Home />} />
+      <Route path="/" element={<Store />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/contactUs" element={<ContactUs />} />
+      <Route path="user/:userId" element={<StoreUserProduct />} />
     </Route>
   )
-)
+);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

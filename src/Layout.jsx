@@ -55,7 +55,7 @@ function Layout() {
     >
       <Header setCartActive={setCartActive} cartActive={cartActive} />
       <Outlet cartActive={cartActive} />
-      <Footer />
+      <Footer  />
     </ProductProvider>
   );
 }
