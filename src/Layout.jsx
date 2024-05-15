@@ -1,10 +1,16 @@
 /* eslint-disable no-unused-vars */
 import Header from "./Components/Header/Header";
 import { Outlet } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { ProductProvider } from "./Context/ProductContext";
 import Footer from "./Components/Footer/Footer";
+import LoginPage from "./Components/Login&SignUp/LoginPage";
+import { AuthContext } from "./Context/AuthContext";
+
+
 function Layout() {
+  const {token} = useContext(AuthContext)
+  console.log(token);
   const [cartActive, setCartActive] = useState(false);
 
   const [item, setProducts] = useState([]);
@@ -41,7 +47,6 @@ function Layout() {
       console.log(err);
     }
   };
-
   return (
     <ProductProvider
       value={{
@@ -53,9 +58,14 @@ function Layout() {
         handleApiCall,
       }}
     >
-      <Header setCartActive={setCartActive} cartActive={cartActive} />
-      <Outlet cartActive={cartActive} />
-      <Footer  />
+      {!token && <LoginPage />}
+      {token && (
+        <div>
+          <Header setCartActive={setCartActive} cartActive={cartActive} />
+          <Outlet cartActive={cartActive} />
+          <Footer />
+        </div>
+      )}
     </ProductProvider>
   );
 }

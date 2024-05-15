@@ -1,33 +1,33 @@
-import {useState} from 'react'
-import { Link } from 'react-router-dom';
-import { userProduct } from '../../Context/ProductContext';
+import {  useState } from "react";
+import { Link } from "react-router-dom";
+import { userProduct } from "../../Context/ProductContext";
+
 function ContactUs() {
-    
-    const [userName,setUserName] = useState("")
-    const [userEmail,setUserEmail] = useState("")
-    const [userPhone,setUserPhone] = useState(0)
-const {handleApiCall} = userProduct()
+  const [userName, setUserName] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [userPhone, setUserPhone] = useState(0);
+  const { handleApiCall } = userProduct();
+ 
 
-    
-
-    const handleSubmit = (e) => {
-      e.preventDefault();
-       const user ={
-         name:userName,
-         email:userEmail,
-         number:userPhone
-       }
-       handleApiCall(user)
-      setUserEmail('')
-      setUserName('')
-      setUserPhone(0)
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const user = {
+      name: userName,
+      email: userEmail,
+      number: userPhone,
     };
+    handleApiCall(user);
+    setUserEmail("");
+    setUserName("");
+    setUserPhone(0);
+  };
 
   return (
-    <div className='h-screen pt-24'>
-    <Link to="/contactUs"></Link>
+    <div className="h-screen pt-24">
+      <Link to="/contactUs"></Link>
       <div className="container mx-auto mt-8">
         <h1 className="text-2xl font-bold mb-4">Contact Us</h1>
+        
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label
@@ -41,7 +41,7 @@ const {handleApiCall} = userProduct()
               id="name"
               name="name"
               value={userName}
-              onChange={(e)=>setUserName(e.target.value)}
+              onChange={(e) => setUserName(e.target.value)}
               placeholder="Enter your name"
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               required
@@ -59,7 +59,7 @@ const {handleApiCall} = userProduct()
               id="email"
               name="email"
               value={userEmail}
-              onChange={(e)=>setUserEmail(e.target.value)}
+              onChange={(e) => setUserEmail(e.target.value)}
               placeholder="Enter your email"
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               required
@@ -77,7 +77,7 @@ const {handleApiCall} = userProduct()
               id="phone"
               name="phone"
               value={userPhone}
-              onChange={(e)=>setUserPhone(e.target.value)}
+              onChange={(e) => setUserPhone(e.target.value)}
               placeholder="Enter your phone number"
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               required
@@ -97,4 +97,4 @@ const {handleApiCall} = userProduct()
   );
 }
 
-export default ContactUs
+export default ContactUs;

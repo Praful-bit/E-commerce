@@ -8,6 +8,8 @@ import Store from './Components/Store/Store.jsx'
 import About from './Components/About/About.jsx'
 import ContactUs from './Components/ContactUS/ContactUs.jsx'
 import StoreUserProduct from './Components/Store/StoreUserProduct.jsx'
+import AuthContextProvider from './Context/AuthContext.jsx'
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,6 +25,8 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+  <AuthContextProvider>
     <RouterProvider router={router}/>
+  </AuthContextProvider>
   </React.StrictMode>
 )
