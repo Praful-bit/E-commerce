@@ -44,7 +44,7 @@ function Signup({ showSignUp, handleToggle }) {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    <div className="min-h-screen flex items-center justify-center bg-rose-200">
       <div className="bg-white p-8 rounded shadow-md max-w-md w-full">
         <h2 className="text-2xl font-semibold mb-4">Signup</h2>
         <form onSubmit={handleSubmit}>

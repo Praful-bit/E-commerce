@@ -10,12 +10,14 @@ import ContactUs from './Components/ContactUS/ContactUs.jsx'
 import StoreUserProduct from './Components/Store/StoreUserProduct.jsx'
 import AuthContextProvider from './Context/AuthContext.jsx'
 import LoginPage from './Components/Login&SignUp/LoginPage.jsx'
+import ProfilePassChange from './Components/Profile/ProfilePassChange.jsx'
 
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
       <Route path="/login" element={<LoginPage />}/>
+      <Route path='/profile' element={<ProfilePassChange/>}/>
       <Route path="/home" element={<Home />} />
       <Route path="/" element={<Store />} />
       <Route path="/about" element={<About />} />

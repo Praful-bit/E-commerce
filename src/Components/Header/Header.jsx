@@ -12,9 +12,19 @@ function Header({ setCartActive }) {
     <nav className="bg-black text-white">
       <div className="container mx-auto flex justify-center">
         <div className="flex items-center space-x-16 pt-2 pb-2 ">
-          <button className="font-serif cursor-pointer" onClick={() => logout(token)}>
+          <button
+            className="font-serif cursor-pointer"
+            onClick={() => logout(token)}
+          >
             Log out
           </button>
+          <NavLink
+            to="/profile"
+            className="text-xl font-serif"
+            onClick={() => setCartActive(false)}
+          >
+            Profile
+          </NavLink>
           <NavLink
             to="/home"
             className="text-xl font-serif"
