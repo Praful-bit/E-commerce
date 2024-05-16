@@ -1,19 +1,27 @@
 import {useContext, useState} from 'react'
 import Signup from './Signup';
 import { AuthContext } from '../../Context/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
+import PasswordChange from './PasswordChange';
 
 function LoginPage() {
      const [email, setEmail] = useState("");
      const [password, setPassword] = useState("");
      const [showSignUp,setShowSignUp] = useState(false)
      const [showLoginPage, setShowLoginPage] = useState(false);
+     const [openPass,setOpenPass] = useState(false)
     const {login} = useContext(AuthContext)
+
     const navigate = useNavigate()
+
       const handleToggle = () => {
         setShowSignUp(!showSignUp);
         setShowLoginPage(!showLoginPage);
       };
+
+      const handleOpen =()=>{
+        setOpenPass(!openPass);   
+      }
 
      const handleLogin = async(e) => {
        e.preventDefault();
@@ -39,7 +47,8 @@ function LoginPage() {
      };
   return (
     <div>
-      {!showLoginPage && (
+     <Link to="/loggin"></Link>
+      {!showLoginPage && !openPass &&(
         <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-md w-full space-y-8">
             <div>
@@ -61,7 +70,7 @@ function LoginPage() {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm h-12"
                     placeholder="Email address"
                   />
                 </div>
@@ -77,7 +86,7 @@ function LoginPage() {
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm h-12"
                     placeholder="Password"
                   />
                 </div>
@@ -99,14 +108,9 @@ function LoginPage() {
                   </label>
                 </div>
 
-                <div className="text-sm">
-                  <a
-                    href="#"
-                    className="font-medium text-indigo-600 hover:text-indigo-500"
-                  >
-                    Forgot your password?
-                  </a>
-                </div>
+               {!openPass && <div className="text-sm">
+                  <button  onClick={handleOpen}>Forget Password</button>
+                </div>}
               </div>
 
               <div>
@@ -138,7 +142,7 @@ function LoginPage() {
                 {!showSignUp && !showLoginPage && (
                   <button
                     className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    onClick={ handleToggle}
+                    onClick={handleToggle}
                   >
                     Sign Up
                   </button>
@@ -148,7 +152,15 @@ function LoginPage() {
           </div>
         </div>
       )}
-      {showSignUp && <Signup showSignUp={showSignUp} handleToggle={handleToggle}/>}
+      {showSignUp && (
+        <Signup showSignUp={showSignUp} handleToggle={handleToggle} />
+      )}
+
+      {openPass && (
+        <PasswordChange openPass={openPass} setOpenPass={setOpenPass}/>
+      )
+      
+      }
     </div>
   );
 }

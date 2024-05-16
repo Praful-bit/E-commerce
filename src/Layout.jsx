@@ -6,6 +6,7 @@ import { ProductProvider } from "./Context/ProductContext";
 import Footer from "./Components/Footer/Footer";
 import LoginPage from "./Components/Login&SignUp/LoginPage";
 import { AuthContext } from "./Context/AuthContext";
+import PasswordChange from "./Components/Login&SignUp/PasswordChange";
 
 
 function Layout() {
@@ -58,6 +59,7 @@ function Layout() {
         handleApiCall,
       }}
     >
+      
       {!token && <LoginPage />}
       {token && (
         <div>
