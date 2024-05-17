@@ -39,7 +39,7 @@ function LoginPage() {
        const resData = await res.json()
        login(resData.idToken);
        navigate("/")
-       console.log(resData);
+      
       }catch(err){
         console.log(err);
       }

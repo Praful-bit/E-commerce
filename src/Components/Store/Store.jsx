@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import { Data } from "../Data/Data";
 import ProductCard from "./ProductCard";
 
-
-
 function Store() {
   return (
     <>
@@ -20,9 +18,7 @@ function Store() {
               <h3 className="text-2xl font-bold pt-16 text-center">
                 Album {index + 1}
               </h3>
-              {/* <Link to={`user/${product.id}  ` }> */}
               <ProductCard key={index} product={product} />
-              {/* </Link> */}
             </div>
           ))}
         </div>

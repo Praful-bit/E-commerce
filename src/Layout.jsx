@@ -1,31 +1,45 @@
 /* eslint-disable no-unused-vars */
 import Header from "./Components/Header/Header";
 import { Outlet } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { ProductProvider } from "./Context/ProductContext";
 import Footer from "./Components/Footer/Footer";
 import LoginPage from "./Components/Login&SignUp/LoginPage";
 import { AuthContext } from "./Context/AuthContext";
 
-
-
 function Layout() {
-  const {token} = useContext(AuthContext)
-  console.log(token);
-  
-  const [cartActive, setCartActive] = useState(false);
+  const { token } = useContext(AuthContext);
 
+  const [cartActive, setCartActive] = useState(false);
   const [item, setProducts] = useState([]);
+
   const addToCart = (products) => {
-    setProducts((prev) => [...prev, { id: Date.now(), products }]);
+    
+    console.log(products)
+     const newCartItem = { id: Date.now(), products };
+     const updatedItems = [...item, newCartItem];
+     setProducts(updatedItems);
+     console.log(updatedItems);
+     localStorage.setItem("key", JSON.stringify(updatedItems));
+
   };
+
+  useEffect(() => {
+    const lol = JSON.parse(localStorage.getItem("key"));
+    console.log(lol);
+  }, []);
+
   const deleteCartItem = (id) => {
-    setProducts((prev) => prev.filter((product) => product.id !== id));
+    const updatedItems = item.filter((product) => product.id !== id);
+    setProducts(updatedItems)
+    localStorage.setItem('key',JSON.stringify(updatedItems))
   };
   const setQuantity = (quantity, id) => {
-    setProducts((prev) =>
-      prev.map((prevT) => (prevT.id === id ? { ...prevT, quantity } : prevT))
-    );
+     const updatedItems = item.map((prevT) =>
+       prevT.id === id ? { ...prevT, quantity } : prevT
+     );
+     setProducts(updatedItems);
+     localStorage.setItem("key", JSON.stringify(updatedItems));
   };
   const handleSet = (quantity, id) => {
     setQuantity(parseInt(quantity), id);
@@ -43,8 +57,8 @@ function Layout() {
           },
         }
       );
-       const data = await response.json();
-        console.log(data);
+      const data = await response.json();
+      console.log(data);
     } catch (err) {
       console.log(err);
     }
@@ -60,7 +74,6 @@ function Layout() {
         handleApiCall,
       }}
     >
-      
       {!token && <LoginPage />}
       {token && (
         <div>

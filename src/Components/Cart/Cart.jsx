@@ -1,14 +1,15 @@
-import { useState } from "react";
-// import CartCard from "./CartCard";
+import {  useState } from "react";
 import { userProduct } from "../../Context/ProductContext";
 
 function Cart() {
   const { item,deleteCartItem,handleSet } = userProduct();
   const [cartOpen, setCartOpen] = useState(false);
   
+
+
+
   const toggleCart = () => {
     if (item.length === 0) {
-      
       alert("Your cart is empty!");
     } else {
       setCartOpen(!cartOpen);
@@ -28,7 +29,9 @@ function Cart() {
      });
      return total;
    };
+   
 
+   
   
   return (
     <>

@@ -1,9 +1,12 @@
 /* eslint-disable react/prop-types */
 import {userProduct} from '..//../Context/ProductContext'
+
 function ProductCard({ product }) {
 const {addToCart}=userProduct()
+
 const add =()=>{
-  addToCart(product);  
+  addToCart(product);
+  
 }
 
   return (

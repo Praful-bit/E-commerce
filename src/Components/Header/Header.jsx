@@ -17,7 +17,7 @@ function Header({ setCartActive }) {
       setTimeout(() => {
         logout();
         setIsLoggedIn(false);
-      }, 5 * 60 * 1000);
+      }, 500000);
     }
 
   }, [isLoggedIn, logout, ]);
