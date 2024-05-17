@@ -1,4 +1,5 @@
-import React from "react";
+/* eslint-disable react-refresh/only-export-components */
+import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
 import {
   Route,
@@ -7,24 +8,81 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 import "./index.css";
-import Home from "./Components/Home/Home.jsx";
-import Layout from "./Layout.jsx";
-import Store from "./Components/Store/Store.jsx";
-import About from "./Components/About/About.jsx";
-import ContactUs from "./Components/ContactUS/ContactUs.jsx";
 import AuthContextProvider from "./Context/AuthContext.jsx";
-import LoginPage from "./Components/Login&SignUp/LoginPage.jsx";
-import ProfilePassChange from "./Components/Profile/ProfilePassChange.jsx";
+
+const Layout =lazy(()=>import('./Layout.jsx'))
+const Store = lazy(() => import("./Components/Store/Store.jsx"));
+const About = lazy(() => import("./Components/About/About.jsx"));
+const ContactUs = lazy(()=> import('./Components/ContactUS/ContactUs.jsx'))
+const LoginPage =lazy(()=>import('./Components/Login&SignUp/LoginPage.jsx'))
+const Home =lazy(()=>import('./Components/Home/Home.jsx'))
+const ProfilePassChange =lazy(()=> import('./Components/Profile/ProfilePassChange.jsx'))
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Layout />}>
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/profile" element={<ProfilePassChange />} />
-      <Route path="/home" element={<Home />} />
-      <Route path="/" element={<Store />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/contactUs" element={<ContactUs />} />
+    <Route
+      path="/"
+      element={
+        <Suspense fallback={<p>Loading...</p>}>
+          <Layout />
+        </Suspense>
+      }
+      loader={() => import("./Layout.jsx")}
+    >
+      <Route
+        path="/login"
+        element={
+          <Suspense fallback={<p>Loading...</p>}>
+            <LoginPage />
+          </Suspense>
+        }
+        loader={() => import("./Components/Login&SignUp/LoginPage.jsx")}
+      />
+      <Route
+        path="/profile"
+        element={
+          <Suspense fallback={<p>Loading...</p>}>
+            <ProfilePassChange />
+          </Suspense>
+        }
+        loader={() => import("./Components/Profile/ProfilePassChange.jsx")}
+      />
+      <Route
+        path="/home"
+        element={
+          <Suspense fallback={<p>Loading...</p>}>
+            <Home />
+          </Suspense>
+        }
+        loader={() => import("./Components/Home/Home.jsx")}
+      />
+      <Route
+        path="/"
+        element={
+          <Suspense fallback={<p>Loading...</p>}>
+            <Store />
+          </Suspense>
+        }
+        loader={() => import("./Components/Store/Store.jsx")}
+      />
+      <Route
+        path="/about"
+        element={
+          <Suspense fallback={<p>Loading...</p>}>
+            <About />
+          </Suspense>
+        }
+        loader={() => import("./Components/About/About.jsx")}
+      />
+      <Route
+        path="/contactUs"
+        element={
+          <Suspense fallback={<p>Loading...</p>}>
+            <ContactUs />
+          </Suspense>
+        }
+        loader={() => import("./Components/ContactUS/ContactUs.jsx")}
+      />
     </Route>
   )
 );
