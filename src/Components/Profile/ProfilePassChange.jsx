@@ -3,7 +3,7 @@ import { AuthContext } from "../../Context/AuthContext";
 import { Link } from 'react-router-dom';
 function ProfilePassChange() {
 const {token} = useContext(AuthContext)
-console.log(token)
+// console.log(token)
  const  newPasswordInput = useRef() 
  const handlePasswordChange =async(e)=>{
  e.preventDefault();

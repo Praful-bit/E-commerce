@@ -10,13 +10,13 @@ import {
 import "./index.css";
 import AuthContextProvider from "./Context/AuthContext.jsx";
 
-const Layout =lazy(()=>import('./Layout.jsx'))
+const Layout = lazy(() => import("./Layout.jsx"));
 const Store = lazy(() => import("./Components/Store/Store.jsx"));
 const About = lazy(() => import("./Components/About/About.jsx"));
-const ContactUs = lazy(()=> import('./Components/ContactUS/ContactUs.jsx'))
-const LoginPage =lazy(()=>import('./Components/Login&SignUp/LoginPage.jsx'))
-const Home =lazy(()=>import('./Components/Home/Home.jsx'))
-const ProfilePassChange =lazy(()=> import('./Components/Profile/ProfilePassChange.jsx'))
+const ContactUs = lazy(() => import("./Components/ContactUS/ContactUs.jsx"));
+const LoginPage = lazy(() => import("./Components/Login&SignUp/LoginPage.jsx"));
+const Home = lazy(() => import("./Components/Home/Home.jsx"));
+const ProfilePassChange = lazy(() =>import("./Components/Profile/ProfilePassChange.jsx"));
 
 const router = createBrowserRouter(
   createRoutesFromElements(
